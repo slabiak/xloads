@@ -2,6 +2,7 @@ language: java
 jdk: openjdk8
 before_install:
 - chmod +x mvnw
+- mysql -e 'CREATE DATABASE xloads;'
 deploy:
  provider: heroku
  api_key:
