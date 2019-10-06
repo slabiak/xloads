@@ -1,15 +1,16 @@
-package com.slabiak.xloads.dto;
+package com.slabiak.xloads.advertisement.dto;
 
-import com.slabiak.xloads.entity.Address;
+import com.slabiak.xloads.advertisement.entity.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class AdvertisementDTO {
-
+public class AdvertisementReadDTO {
     private int id;
     private int ownerId;
     private String title;

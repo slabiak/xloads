@@ -1,19 +1,18 @@
-package com.slabiak.xloads.dto;
+package com.slabiak.xloads.user.dto;
 
-import com.slabiak.xloads.entity.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class UserDTO {
-
+public class UserReadDTO {
     private int id;
     private String firstName;
     private String lastName;
     private String phone;
     private String email;
-    private Address address;
 }

@@ -1,18 +1,18 @@
-package com.slabiak.xloads.entity;
+package com.slabiak.xloads.advertisement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "address")
-public class Address extends BaseEntity {
+@Embeddable
+public class Address {
 
     private String street_number;
     private String route;
