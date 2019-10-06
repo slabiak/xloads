@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.slabiak.xloads.advertisement.entity.AdvertisementEntity;
 import com.slabiak.xloads.entity.BaseEntity;
 import com.slabiak.xloads.geocoding.Address;
-import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.GeocodingApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,7 +33,7 @@ public class UserEntity extends BaseEntity {
     private Address address;
 
     @Embedded
-    private AddressPosition addressPosition;
+    private GeocodingApiResponse addressPosition;
 
     @OneToMany(mappedBy = "owner")
     List<AdvertisementEntity> advertisementEntities;

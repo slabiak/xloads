@@ -21,8 +21,18 @@ public class DirectionsApiResponseDeserializer extends StdDeserializer<Direction
     @Override
     public DirectionsApiResponse deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-        int distance = (Integer) node.get("routes").get(0).get("legs").get(0).get("distance").get("value").asInt();
-        int duration = (Integer) node.get("routes").get(0).get("legs").get(0).get("duration").get("value").asInt();
-        return new DirectionsApiResponse(distance, duration);
+        if (node.get("status").asText().equals("OK")) {
+            int distance = (Integer) node.get("routes").get(0).get("legs").get(0).get("distance").get("value").asInt();
+            int duration = (Integer) node.get("routes").get(0).get("legs").get(0).get("duration").get("value").asInt();
+            return new DirectionsApiResponse(distance, duration);
+        } else {
+            String errorMessage;
+            if (node.has("error_message")) {
+                errorMessage = node.get("error_message").asText();
+            } else {
+                errorMessage = "NO_MESSAGE";
+            }
+            throw new DirectionsNotFoundException("Directions between provided locations couldn't be resolved by Google API, detailed message: " + errorMessage);
+        }
     }
 }

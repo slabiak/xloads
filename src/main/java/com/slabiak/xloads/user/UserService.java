@@ -1,6 +1,6 @@
 package com.slabiak.xloads.user;
 
-import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.GeocodingApiResponse;
 import com.slabiak.xloads.geocoding.PositionService;
 import com.slabiak.xloads.user.dto.UserCreateDTO;
 import com.slabiak.xloads.user.dto.UserReadDTO;
@@ -22,7 +22,7 @@ public class UserService {
 
     public void createNew(UserCreateDTO userCreateDTO) {
         UserEntity userEntity = modelMapper.map(userCreateDTO, UserEntity.class);
-        AddressPosition addressPosition = positionService.resolvePosition(userCreateDTO.getAddress());
+        GeocodingApiResponse addressPosition = positionService.resolvePosition(userCreateDTO.getAddress());
         userEntity.setAddressPosition(addressPosition);
         userRepository.save(userEntity);
     }

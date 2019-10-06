@@ -1,7 +1,7 @@
 package com.slabiak.xloads.advertisement.dto;
 
 import com.slabiak.xloads.geocoding.Address;
-import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.GeocodingApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +18,5 @@ public class AdvertisementReadDTO {
     private String description;
     private double price;
     private Address address;
-    private AddressPosition addressPosition;
+    private GeocodingApiResponse addressPosition;
 }
