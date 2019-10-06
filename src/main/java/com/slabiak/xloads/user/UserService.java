@@ -1,7 +1,7 @@
 package com.slabiak.xloads.user;
 
-import com.slabiak.xloads.position.AddressPosition;
-import com.slabiak.xloads.position.PositionService;
+import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.PositionService;
 import com.slabiak.xloads.user.dto.UserCreateDTO;
 import com.slabiak.xloads.user.dto.UserReadDTO;
 import com.slabiak.xloads.user.entity.UserEntity;

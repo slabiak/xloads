@@ -2,15 +2,20 @@ package com.slabiak.xloads.advertisement;
 
 import com.slabiak.xloads.advertisement.dto.AdvertisementCreateDTO;
 import com.slabiak.xloads.advertisement.dto.AdvertisementReadDTO;
+import com.slabiak.xloads.advertisement.dto.AdvertisementUserDistanceDTO;
 import com.slabiak.xloads.advertisement.entity.AdvertisementEntity;
-import com.slabiak.xloads.position.AddressPosition;
-import com.slabiak.xloads.position.PositionService;
+import com.slabiak.xloads.directions.DirectionsApiResponse;
+import com.slabiak.xloads.directions.DirectionsService;
+import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.PositionService;
 import com.slabiak.xloads.user.UserService;
+import com.slabiak.xloads.user.dto.UserReadDTO;
 import com.slabiak.xloads.user.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +27,7 @@ public class AdvertisementService {
     private UserService userService;
     private ModelMapper modelMapper;
     private PositionService positionService;
+    private DirectionsService directionsService;
 
     public void createNew(AdvertisementCreateDTO advertisementCreateDTO) {
         UserEntity userEntity = modelMapper.map(userService.getUserById(advertisementCreateDTO.getOwnerId()), UserEntity.class);
@@ -48,6 +54,20 @@ public class AdvertisementService {
         return advertisementRepository.findByOwnerId(ownerId)
                 .stream()
                 .map(advertisementEntity -> modelMapper.map(advertisementEntity, AdvertisementReadDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public AdvertisementUserDistanceDTO getDistanceBetweenUserAndAdvertisement(int userId, int advertisementId) {
+        UserReadDTO user = userService.getUserById(userId);
+        AdvertisementReadDTO advertisement = getById(advertisementId);
+        DirectionsApiResponse distance = directionsService.resolveTimeDistance(user.getAddressPosition(), advertisement.getAddressPosition());
+        return AdvertisementUserDistanceDTO.builder().advertisement(advertisement).distance(distance).build();
+    }
+
+    public List<AdvertisementUserDistanceDTO> getDistancesBetweenUserAndAllAdvertisements(int userId) {
+        return advertisementRepository.findAll().stream()
+                .map(advertisement -> getDistanceBetweenUserAndAdvertisement(userId, advertisement.getId()))
+                .sorted((Comparator.comparingInt(a -> a.getDistance().getTime())))
                 .collect(Collectors.toList());
     }
 }

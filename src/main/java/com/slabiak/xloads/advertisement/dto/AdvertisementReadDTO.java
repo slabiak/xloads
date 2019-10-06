@@ -1,7 +1,7 @@
 package com.slabiak.xloads.advertisement.dto;
 
-import com.slabiak.xloads.position.Address;
-import com.slabiak.xloads.position.AddressPosition;
+import com.slabiak.xloads.geocoding.Address;
+import com.slabiak.xloads.geocoding.AddressPosition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

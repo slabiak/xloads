@@ -1,4 +1,4 @@
-package com.slabiak.xloads.position;
+package com.slabiak.xloads.geocoding;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,4 +15,9 @@ import javax.persistence.Embeddable;
 public class AddressPosition {
     private String lat;
     private String lng;
+
+    @Override
+    public String toString() {
+        return lng + "," + lat;
+    }
 }
