@@ -4,11 +4,14 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.slabiak.xloads.advertisement.entity.AdvertisementEntity;
 import com.slabiak.xloads.entity.BaseEntity;
+import com.slabiak.xloads.position.Address;
+import com.slabiak.xloads.position.AddressPosition;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -25,6 +28,12 @@ public class UserEntity extends BaseEntity {
     private String lastName;
     private String phone;
     private String email;
+
+    @Embedded
+    private Address address;
+
+    @Embedded
+    private AddressPosition addressPosition;
 
     @OneToMany(mappedBy = "owner")
     List<AdvertisementEntity> advertisementEntities;

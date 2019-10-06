@@ -1,6 +1,7 @@
 package com.slabiak.xloads.advertisement.dto;
 
-import com.slabiak.xloads.advertisement.entity.Address;
+import com.slabiak.xloads.position.Address;
+import com.slabiak.xloads.position.AddressPosition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,5 @@ public class AdvertisementReadDTO {
     private String description;
     private double price;
     private Address address;
+    private AddressPosition addressPosition;
 }

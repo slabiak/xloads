@@ -1,5 +1,6 @@
 package com.slabiak.xloads.user.dto;
 
+import com.slabiak.xloads.position.Address;
 import lombok.*;
 
 @AllArgsConstructor
@@ -12,4 +13,5 @@ public class UserCreateDTO {
     private String lastName;
     private String phone;
     private String email;
+    private Address address;
 }

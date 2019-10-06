@@ -1,6 +1,6 @@
 package com.slabiak.xloads.advertisement.dto;
 
-import com.slabiak.xloads.advertisement.entity.Address;
+import com.slabiak.xloads.position.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

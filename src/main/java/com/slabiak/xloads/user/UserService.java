@@ -1,5 +1,7 @@
 package com.slabiak.xloads.user;
 
+import com.slabiak.xloads.position.AddressPosition;
+import com.slabiak.xloads.position.PositionService;
 import com.slabiak.xloads.user.dto.UserCreateDTO;
 import com.slabiak.xloads.user.dto.UserReadDTO;
 import com.slabiak.xloads.user.entity.UserEntity;
@@ -16,9 +18,12 @@ public class UserService {
 
     private UserRepository userRepository;
     private ModelMapper modelMapper;
+    private PositionService positionService;
 
     public void createNew(UserCreateDTO userCreateDTO) {
         UserEntity userEntity = modelMapper.map(userCreateDTO, UserEntity.class);
+        AddressPosition addressPosition = positionService.resolvePosition(userCreateDTO.getAddress());
+        userEntity.setAddressPosition(addressPosition);
         userRepository.save(userEntity);
     }
 

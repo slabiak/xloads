@@ -2,6 +2,7 @@ package com.slabiak.xloads.advertisement;
 
 import com.slabiak.xloads.advertisement.dto.AdvertisementCreateDTO;
 import com.slabiak.xloads.advertisement.dto.AdvertisementReadDTO;
+import com.slabiak.xloads.position.PositionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class AdvertisementController {
 
     AdvertisementService advertisementService;
+    PositionService positionService;
 
     @GetMapping
     public List<AdvertisementReadDTO> getAllAdvertisements() {
