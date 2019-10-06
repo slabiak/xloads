@@ -1,6 +1,8 @@
 package com.slabiak.xloads.advertisement.entity;
 
 import com.slabiak.xloads.entity.BaseEntity;
+import com.slabiak.xloads.position.Address;
+import com.slabiak.xloads.position.AddressPosition;
 import com.slabiak.xloads.user.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +29,9 @@ public class AdvertisementEntity extends BaseEntity {
 
     @Embedded
     private Address address;
+
+    @Embedded
+    private AddressPosition addressPosition;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

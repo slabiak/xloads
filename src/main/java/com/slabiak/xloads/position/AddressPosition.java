@@ -1,4 +1,4 @@
-package com.slabiak.xloads.advertisement.entity;
+package com.slabiak.xloads.position;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,13 +12,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @Builder
 @Embeddable
-public class Address {
-
-    private String street_number;
-    private String route;
-    private String city;
-    private String postal_code;
+public class AddressPosition {
     private String lat;
     private String lng;
-
 }
