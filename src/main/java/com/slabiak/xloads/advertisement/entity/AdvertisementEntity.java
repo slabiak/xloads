@@ -2,7 +2,7 @@ package com.slabiak.xloads.advertisement.entity;
 
 import com.slabiak.xloads.entity.BaseEntity;
 import com.slabiak.xloads.geocoding.Address;
-import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.GeocodingApiResponse;
 import com.slabiak.xloads.user.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +31,7 @@ public class AdvertisementEntity extends BaseEntity {
     private Address address;
 
     @Embedded
-    private AddressPosition addressPosition;
+    private GeocodingApiResponse addressPosition;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

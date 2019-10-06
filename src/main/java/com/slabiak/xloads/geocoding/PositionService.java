@@ -15,9 +15,8 @@ public class PositionService {
         this.restTemplate = restTemplate;
     }
 
-    public AddressPosition resolvePosition(Address address) {
-        ApiResponse apiResponse = restTemplate.getForObject(buildRequestUrl(address), ApiResponse.class);
-        return new AddressPosition(apiResponse.getLtd(), apiResponse.getLng());
+    public GeocodingApiResponse resolvePosition(Address address) {
+        return restTemplate.getForObject(buildRequestUrl(address), GeocodingApiResponse.class);
     }
 
     private String buildRequestUrl(Address address) {

@@ -6,7 +6,7 @@ import com.slabiak.xloads.advertisement.dto.AdvertisementUserDistanceDTO;
 import com.slabiak.xloads.advertisement.entity.AdvertisementEntity;
 import com.slabiak.xloads.directions.DirectionsApiResponse;
 import com.slabiak.xloads.directions.DirectionsService;
-import com.slabiak.xloads.geocoding.AddressPosition;
+import com.slabiak.xloads.geocoding.GeocodingApiResponse;
 import com.slabiak.xloads.geocoding.PositionService;
 import com.slabiak.xloads.user.UserService;
 import com.slabiak.xloads.user.dto.UserReadDTO;
@@ -31,7 +31,7 @@ public class AdvertisementService {
 
     public void createNew(AdvertisementCreateDTO advertisementCreateDTO) {
         UserEntity userEntity = modelMapper.map(userService.getUserById(advertisementCreateDTO.getOwnerId()), UserEntity.class);
-        AddressPosition addressPosition = positionService.resolvePosition(advertisementCreateDTO.getAddress());
+        GeocodingApiResponse addressPosition = positionService.resolvePosition(advertisementCreateDTO.getAddress());
         AdvertisementEntity advertisementEntity = modelMapper.map(advertisementCreateDTO, AdvertisementEntity.class);
         advertisementEntity.setOwner(userEntity);
         advertisementEntity.setAddressPosition(addressPosition);
@@ -47,7 +47,6 @@ public class AdvertisementService {
 
     public AdvertisementReadDTO getById(int advertisementId) {
         return modelMapper.map(advertisementRepository.findById(advertisementId).orElseThrow(() -> new AdvertisementNotFoundException("Advertisement with provided id not found")), AdvertisementReadDTO.class);
-
     }
 
     public List<AdvertisementReadDTO> getByOwner(int ownerId) {
