@@ -1,8 +1,8 @@
 package com.slabiak.xloads.advertisement.entity;
 
 import com.slabiak.xloads.entity.BaseEntity;
-import com.slabiak.xloads.position.Address;
-import com.slabiak.xloads.position.AddressPosition;
+import com.slabiak.xloads.geocoding.Address;
+import com.slabiak.xloads.geocoding.AddressPosition;
 import com.slabiak.xloads.user.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

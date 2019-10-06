@@ -1,6 +1,6 @@
 package com.slabiak.xloads.user.dto;
 
-import com.slabiak.xloads.position.Address;
+import com.slabiak.xloads.geocoding.Address;
 import lombok.*;
 
 @AllArgsConstructor

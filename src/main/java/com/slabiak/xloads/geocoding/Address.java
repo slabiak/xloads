@@ -1,4 +1,4 @@
-package com.slabiak.xloads.position;
+package com.slabiak.xloads.geocoding;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

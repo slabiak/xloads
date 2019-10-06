@@ -1,4 +1,4 @@
-package com.slabiak.xloads.position;
+package com.slabiak.xloads.geocoding;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;

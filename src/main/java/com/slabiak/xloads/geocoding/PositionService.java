@@ -1,4 +1,4 @@
-package com.slabiak.xloads.position;
+package com.slabiak.xloads.geocoding;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
