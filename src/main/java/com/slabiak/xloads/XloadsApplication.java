@@ -9,5 +9,4 @@ public class XloadsApplication {
     public static void main(String[] args) {
         SpringApplication.run(XloadsApplication.class, args);
     }
-
 }
