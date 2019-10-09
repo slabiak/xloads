@@ -29,8 +29,8 @@ public class AdvertisementService {
     private PositionService positionService;
     private DirectionsService directionsService;
 
-    public void createNew(AdvertisementCreateDTO advertisementCreateDTO) {
-        UserEntity userEntity = modelMapper.map(userService.getUserById(advertisementCreateDTO.getOwnerId()), UserEntity.class);
+    public void createNew(AdvertisementCreateDTO advertisementCreateDTO, int ownerId) {
+        UserEntity userEntity = modelMapper.map(userService.getUserById(ownerId), UserEntity.class);
         GeocodingApiResponse addressPosition = positionService.resolvePosition(advertisementCreateDTO.getAddress());
         AdvertisementEntity advertisementEntity = modelMapper.map(advertisementCreateDTO, AdvertisementEntity.class);
         advertisementEntity.setOwner(userEntity);

@@ -12,7 +12,6 @@ import lombok.Setter;
 @Setter
 public class AdvertisementCreateDTO {
 
-    private int ownerId;
     private String title;
     private String description;
     private double price;

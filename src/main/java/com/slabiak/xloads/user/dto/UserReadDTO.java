@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 public class UserReadDTO {
     private int id;
+    private String username;
     private String firstName;
     private String lastName;
     private String phone;
