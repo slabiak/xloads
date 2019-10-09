@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "advertisement")
+@Entity(name = "advertisements")
 public class AdvertisementEntity extends BaseEntity {
 
     private double price;

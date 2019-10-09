@@ -9,9 +9,13 @@ import lombok.*;
 @Setter
 @Builder
 public class UserCreateDTO {
+    private String username;
+    private String password;
+    private String repeatPassword;
+    private String email;
+    private String repeatEmail;
     private String firstName;
     private String lastName;
     private String phone;
-    private String email;
     private Address address;
 }

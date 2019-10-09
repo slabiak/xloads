@@ -11,21 +11,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "users")
 @JsonDeserialize(builder = UserEntity.UserBuilder.class)
 public class UserEntity extends BaseEntity {
 
+    private String username;
     private String firstName;
     private String lastName;
+    private String encodedPassword;
     private String phone;
     private String email;
 
@@ -34,6 +35,10 @@ public class UserEntity extends BaseEntity {
 
     @Embedded
     private GeocodingApiResponse addressPosition;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<RoleEntity> roles;
 
     @OneToMany(mappedBy = "owner")
     List<AdvertisementEntity> advertisementEntities;
