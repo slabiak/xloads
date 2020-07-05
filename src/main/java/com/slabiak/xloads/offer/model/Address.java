@@ -1,4 +1,4 @@
-package com.slabiak.xloads.geocoding;
+package com.slabiak.xloads.offer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

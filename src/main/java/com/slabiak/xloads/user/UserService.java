@@ -1,8 +1,6 @@
 package com.slabiak.xloads.user;
 
 import com.google.common.collect.Lists;
-import com.slabiak.xloads.geocoding.GeocodingApiResponse;
-import com.slabiak.xloads.geocoding.PositionService;
 import com.slabiak.xloads.user.dto.UserCreateDTO;
 import com.slabiak.xloads.user.dto.UserReadDTO;
 import com.slabiak.xloads.user.entity.RoleEntity;
@@ -21,7 +19,6 @@ public class UserService {
 
     private UserRepository userRepository;
     private ModelMapper modelMapper;
-    private PositionService positionService;
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
 
@@ -36,9 +33,7 @@ public class UserService {
             throw new RuntimeException("Email doesn't match");
         }
         UserEntity userEntity = modelMapper.map(userCreateDTO, UserEntity.class);
-        GeocodingApiResponse addressPosition = positionService.resolvePosition(userCreateDTO.getAddress());
         userEntity.setRoles(getStandardUserRoles());
-        userEntity.setAddressPosition(addressPosition);
         userEntity.setEncodedPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
         userRepository.save(userEntity);
     }
