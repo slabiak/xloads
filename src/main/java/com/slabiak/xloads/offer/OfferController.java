@@ -4,6 +4,7 @@ import com.slabiak.xloads.offer.dto.OfferCreateDTO;
 import com.slabiak.xloads.offer.dto.OfferReadDTO;
 import com.slabiak.xloads.security.UserPrincipal;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +22,19 @@ public class OfferController {
         return offerService.getAll();
     }
 
+    @GetMapping("/page/{pageNumber}/{offersPerPage}")
+    public Page<OfferReadDTO> getPage(@PathVariable("pageNumber") int pageNumber, @PathVariable("offersPerPage") int offersPerPage) {
+        return offerService.getPage(pageNumber, offersPerPage);
+    }
+
+    @GetMapping("/page/{pageNumber}/{offersPerPage}/sorted/{sortField}/{direction}")
+    public Page<OfferReadDTO> getSortedPage(@PathVariable("pageNumber") int pageNumber, @PathVariable("offersPerPage") int offersPerPage,
+                                            @PathVariable("sortField") String sortField, @PathVariable("direction") String direction) {
+        return offerService.getSortedPage(pageNumber, offersPerPage, sortField, direction);
+    }
+
     @GetMapping("/{offerId}")
-    public OfferReadDTO getOfferById(@PathVariable("offeraId") int advertisementId) {
+    public OfferReadDTO getOfferById(@PathVariable("offerId") int advertisementId) {
         return offerService.getById(advertisementId);
     }
 
