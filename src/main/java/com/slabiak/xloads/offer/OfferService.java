@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class AdvertisementService {
+public class OfferService {
 
-    private AdvertisementRepository advertisementRepository;
+    private OfferRepository advertisementRepository;
     private UserService userService;
     private ModelMapper modelMapper;
 
@@ -35,7 +35,7 @@ public class AdvertisementService {
     }
 
     public OfferReadDTO getById(int advertisementId) {
-        return modelMapper.map(advertisementRepository.findById(advertisementId).orElseThrow(() -> new AdvertisementNotFoundException("Advertisement with provided id not found")), OfferReadDTO.class);
+        return modelMapper.map(advertisementRepository.findById(advertisementId).orElseThrow(() -> new OfferNotFoundException("Advertisement with provided id not found")), OfferReadDTO.class);
     }
 
     public List<OfferReadDTO> getByOwner(int ownerId) {

@@ -14,30 +14,30 @@ import java.util.List;
 @AllArgsConstructor
 public class OfferController {
 
-    AdvertisementService advertisementService;
+    OfferService offerService;
 
     @GetMapping
-    public List<OfferReadDTO> getAllAdvertisements() {
-        return advertisementService.getAll();
+    public List<OfferReadDTO> getAllOffers() {
+        return offerService.getAll();
     }
 
-    @GetMapping("/{advertisementId}")
-    public OfferReadDTO getAdvertisementById(@PathVariable("advertisementId") int advertisementId) {
-        return advertisementService.getById(advertisementId);
+    @GetMapping("/{offerId}")
+    public OfferReadDTO getOfferById(@PathVariable("offeraId") int advertisementId) {
+        return offerService.getById(advertisementId);
     }
 
     @GetMapping("/owner/me")
-    public List<OfferReadDTO> getCurrentUserAdvertisements(@AuthenticationPrincipal UserPrincipal userPrincipal) {
-        return advertisementService.getByOwner(userPrincipal.getId());
+    public List<OfferReadDTO> getCurrentUserOffers(@AuthenticationPrincipal UserPrincipal userPrincipal) {
+        return offerService.getByOwner(userPrincipal.getId());
     }
 
     @GetMapping("/owner/{ownerId}")
-    public List<OfferReadDTO> getAdvertisementByOwnerId(@PathVariable("ownerId") int ownerId) {
-        return advertisementService.getByOwner(ownerId);
+    public List<OfferReadDTO> getOfferByOwnerId(@PathVariable("ownerId") int ownerId) {
+        return offerService.getByOwner(ownerId);
     }
 
     @PostMapping
-    public void addNewAdvertisementForCurrentUser(@RequestBody OfferCreateDTO advertisementCreateDTO, @AuthenticationPrincipal UserPrincipal userPrincipal) {
-        advertisementService.createNew(advertisementCreateDTO, userPrincipal.getId());
+    public void addNewOfferForCurrentUser(@RequestBody OfferCreateDTO advertisementCreateDTO, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        offerService.createNew(advertisementCreateDTO, userPrincipal.getId());
     }
 }
