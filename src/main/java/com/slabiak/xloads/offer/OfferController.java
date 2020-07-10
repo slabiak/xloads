@@ -22,11 +22,16 @@ public class OfferController {
         return offerService.getAll();
     }
 
-    @GetMapping("/page")
-    public Page<OfferReadDTO> getPage(@RequestParam("limit") int limit, @RequestParam("page") int page,
+    @GetMapping("/category/{categoryId}")
+    public List<OfferReadDTO> getAllOffersByCategory(@PathVariable("categoryId") int categoryId) {
+        return offerService.getAllByCategory(categoryId);
+    }
+
+    @GetMapping("/category/{categoryId}/page")
+    public Page<OfferReadDTO> getPage(@PathVariable("categoryId") int categoryId, @RequestParam("limit") int limit, @RequestParam("page") int page,
                                       @RequestParam("price_gte") int price_gte, @RequestParam("price_lte") int price_lte,
                                       @RequestParam("sort_by") String sort_by) {
-        return offerService.getPage(limit, page, price_gte, price_lte, sort_by);
+        return offerService.getPageByCategory(categoryId, limit, page, price_gte, price_lte, sort_by);
     }
 
     @GetMapping("/{offerId}")

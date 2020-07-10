@@ -1,5 +1,6 @@
 package com.slabiak.xloads.offer.entity;
 
+import com.slabiak.xloads.category.OfferCategoryEntity;
 import com.slabiak.xloads.entity.BaseEntity;
 import com.slabiak.xloads.offer.model.Address;
 import com.slabiak.xloads.offer.model.Coordinates;
@@ -33,6 +34,10 @@ public class OfferEntity extends BaseEntity {
 
     @Embedded
     private Coordinates coordinates;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private OfferCategoryEntity category;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

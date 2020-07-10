@@ -11,6 +11,9 @@ import java.util.List;
 public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
     List<OfferEntity> findByOwnerId(int ownerId);
 
-    @Query("Select o from offers o where o.price <= :price_lte and o.price >= :price_gte")
-    Page<OfferEntity> find(double price_gte, double price_lte, Pageable pageable);
+    @Query("SELECT o FROM offers o inner join o.category c WHERE o.price <= :price_lte AND o.price >= :price_gte AND c.id = :categoryId")
+    Page<OfferEntity> find(int categoryId, double price_gte, double price_lte, Pageable pageable);
+
+    @Query("SELECT o FROM offers o inner join o.category c WHERE c.id = :categoryId")
+    List<OfferEntity> findAllByCategory(int categoryId);
 }

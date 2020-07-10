@@ -36,11 +36,11 @@ public class OfferService {
                 .map(offerEntity -> modelMapper.map(offerEntity, OfferReadDTO.class));
     }
 
-    public Page<OfferReadDTO> getPage(int limit, int page, int price_gte, int price_lte, String sort_by) {
+    public Page<OfferReadDTO> getPageByCategory(int categoryId, int limit, int page, int price_gte, int price_lte, String sort_by) {
         String sortField = sort_by.split("\\.")[0];
         String sortDirection = sort_by.split("\\.")[1];
         Sort sort = sortDirection.equals("asc") ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-        return offerRepository.find(1.0 * price_gte, 1.0 * price_lte, PageRequest.of(page, limit, sort))
+        return offerRepository.find(categoryId, 1.0 * price_gte, 1.0 * price_lte, PageRequest.of(page, limit, sort))
                 .map(offerEntity -> modelMapper.map(offerEntity, OfferReadDTO.class));
     }
 
@@ -57,6 +57,13 @@ public class OfferService {
 
     public List<OfferReadDTO> getByOwner(int ownerId) {
         return offerRepository.findByOwnerId(ownerId)
+                .stream()
+                .map(advertisementEntity -> modelMapper.map(advertisementEntity, OfferReadDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public List<OfferReadDTO> getAllByCategory(int categoryId) {
+        return offerRepository.findAllByCategory(categoryId)
                 .stream()
                 .map(advertisementEntity -> modelMapper.map(advertisementEntity, OfferReadDTO.class))
                 .collect(Collectors.toList());

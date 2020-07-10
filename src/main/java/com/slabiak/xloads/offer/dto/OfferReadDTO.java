@@ -1,5 +1,6 @@
 package com.slabiak.xloads.offer.dto;
 
+import com.slabiak.xloads.category.OfferCategoryEntity;
 import com.slabiak.xloads.offer.model.Address;
 import com.slabiak.xloads.offer.model.Coordinates;
 import lombok.AllArgsConstructor;
@@ -25,4 +26,5 @@ public class OfferReadDTO {
     private int price;
     private Address address;
     private Coordinates coordinates;
+    private OfferCategoryEntity category;
 }
