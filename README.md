@@ -12,4 +12,4 @@ This project consists of few different repositories. Below you can find short de
 
 **Architecture diagram**:
 
-<a href="https://github.com/slabiak/slabiak.github.io/blob/master/images/xloads_arhcitecture.png?raw=true"><img src="https://github.com/slabiak/slabiak.github.io/blob/master/images/xloads_arhcitecture.png?raw=true" width="600"></a>
+<a href="https://github.com/slabiak/slabiak.github.io/blob/master/images/xloads_arhcitecture.jpg?raw=true"><img src="https://github.com/slabiak/slabiak.github.io/blob/master/images/xloads_arhcitecture.jpg?raw=true"></a>
