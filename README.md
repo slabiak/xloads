@@ -8,7 +8,7 @@ Live demo of this app can be found [here](https://nearprops.netlify.app/)
 
 <a href="https://github.com/slabiak/slabiak.github.io/blob/master/images/mobile.png?raw=true"><img src="https://github.com/slabiak/slabiak.github.io/blob/master/images/mobile.png?raw=true" width="300"></a>
 
-This repo is a Spring Boot Java App. It handles business logic related to offers such as adding and fetching offers, authentication etc. It is a backend service for react frontned app `xloads_ui` https://github.com/slabiak/xloads_ui
+This repo is a Spring Boot Java App. It handles business logic related to offers such as adding and fetching offers, authentication etc. It is a backend service for  [xloads_ui](https://github.com/slabiak/xloads_ui) (react fronent app).
 
 
 **Architecture diagram**:
