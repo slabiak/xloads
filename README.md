@@ -8,11 +8,8 @@ Live demo of this app can be found [here](https://nearprops.netlify.app/)
 
 <a href="https://github.com/slabiak/slabiak.github.io/blob/master/images/mobile.png?raw=true"><img src="https://github.com/slabiak/slabiak.github.io/blob/master/images/mobile.png?raw=true" width="300"></a>
 
-This project consists of few different repositories. Below you can find short description and link to each of them:
+This repo is a Spring Boot Java App. It handles business logic related to offers such as adding and fetching offers, authentication etc. It is a backend service for react frontned app `xloads_ui` https://github.com/slabiak/xloads_ui
 
-1. `xloads` https://github.com/slabiak/xloads - This repo is a Spring Boot Java App. It handles business logic related with offers such as adding and fetching offers, authentication etc.
-2. `xloads_ui` https://github.com/slabiak/xloads_ui - This repo is a React app. It makes calls to backend services and provides UI.
-3. `xloads_rest_proxy` https://github.com/slabiak/xloads_rest_proxy - This service is a Spring Boot Java app. It is some kind of proxy between UI and routing and place search services. For geocoding and place search autocomplete `nomatim` is used. For bike, walk, car routing requests `graphopper` is used. For public transportation routing requests `OpenTripPlanner` is used.
 
 **Architecture diagram**:
 
